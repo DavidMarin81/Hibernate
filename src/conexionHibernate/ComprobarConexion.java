@@ -10,31 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class ActualizaClientes2 {
+public class ComprobarConexion {
 
     public static void main(String[] args) {
-        SessionFactory miFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Clientes.class).buildSessionFactory();
-        Session miSession = miFactory.openSession();
-        
-        try{
-            miSession.beginTransaction();
-            
-            //Se usa HQL
-            //Se cambian los apellidos que empiezan por c por marin
-            miSession.createQuery("update Clientes set apellidos='Marin' where "
-                    + "id LIKE '2'").executeUpdate();
-            
-            miSession.getTransaction().commit();
-            System.out.println("Registros actualizados correctamente");
-            
-            miSession.close();
-        }finally{
-            miFactory.close();
-        }
-        
-    }
-    
-        public static void comprobarConexion() {
         String jdbcUrl = "jdbc:sqlserver://localhost:1433;database=pruebasHibernate;encrypt=true;trustServerCertificate=true";
         String usuario = "user";
         String password = "abc123.";

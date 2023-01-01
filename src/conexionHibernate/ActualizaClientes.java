@@ -18,14 +18,16 @@ public class ActualizaClientes {
         
         try{
             // Id del cliente que vamos a actualizar
-            int clienteId = 1;
+            int clienteId = 4;
             miSession.beginTransaction();
             
             //Primer parametro = clase a la que pertenece el objeto
             //Segundo parametro = el id del cliente que queremos actualizar
             Clientes miCliente = miSession.get(Clientes.class, clienteId);
             //Usamos el setter para modificar el nombre
-            miCliente.setNombre("Xian");
+            miCliente.setNombre("Patricia");
+            miCliente.setApellidos("Cid");
+            miCliente.setDireccion("Coia");
             
             miSession.getTransaction().commit();
             System.out.println("Registro actualizado correctamente");
